@@ -2,16 +2,16 @@
 
 # Go vars.
 GOPRIVATE := github.com/flyingdice
-GOPATH ?= $(shell go env GOPATH)
-GOBIN ?= $(GOPATH)/bin
+GOPATH    ?= $(shell go env GOPATH)
+GOBIN     ?= $(GOPATH)/bin
 
 # Project vars.
 VERSION ?= $(shell git describe --tags)
 
 .PHONY: modules
 modules: ## Tidy up and vendor go modules.
-	@go mod tidy
-	@go mod vendor
+	@GOPRIVATE=$(GOPRIVATE) go mod tidy
+	@GOPRIVATE=$(GOPRIVATE) go mod vendor
 
 .PHONY: help
 help: ## Print Makefile usage.
