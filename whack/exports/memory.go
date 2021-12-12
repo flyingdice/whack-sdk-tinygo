@@ -24,8 +24,8 @@ func free(ptr uintptr, length int32) {
 
 	header := (*reflect.SliceHeader)(unsafe.Pointer(&buffer))
 	header.Data = ptr
-	header.Len = int(length)
-	header.Cap = int(length)
+	header.Len = uintptr(length)
+	header.Cap = uintptr(length)
 
 	buffer = nil
 }

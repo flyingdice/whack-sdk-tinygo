@@ -15,14 +15,12 @@ package main
 
 import (
 	"github.com/flyingdice/whack-sdk-tinygo/whack"
-	"github.com/flyingdice/whack-sdk-tinygo/whack/request"
-	"github.com/flyingdice/whack-sdk-tinygo/whack/response"
 )
 
 type helloApp struct{}
 
-func (a *helloApp) Main(req request.Request) response.Response {
-	return response.Success([]byte("Hello World"))
+func (a *helloApp) Main(req whack.Request) whack.Response {
+	return whack.Success([]byte("Hello World"))
 }
 
 func main() {

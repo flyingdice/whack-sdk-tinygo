@@ -1,4 +1,4 @@
-package request
+package whack
 
 import "github.com/flyingdice/whack-sdk-tinygo/internal/memory"
 
@@ -12,7 +12,7 @@ type request struct {
 
 func (r *request) Bytes() []byte { return r.bytes }
 
-func New(ptr uintptr, length int32) *request {
+func NewRequest(ptr uintptr, length int32) *request {
 	return &request{
 		bytes: memory.PointerToSlice(ptr, length),
 	}

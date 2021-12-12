@@ -1,4 +1,4 @@
-package response
+package whack
 
 type Response interface {
 	Success() []byte

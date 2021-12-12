@@ -5,7 +5,7 @@ import (
 	"unsafe"
 )
 
-// UnsafePointer returns an unsafe.Pointer + length for the given
+// SliceToPointer returns unsafe.Pointer + length for the given
 // byte array.
 func SliceToPointer(buffer []byte) (unsafe.Pointer, int32) {
 	header := (*reflect.SliceHeader)(unsafe.Pointer(&buffer))
@@ -17,7 +17,7 @@ func PointerToSlice(ptr uintptr, length int32) []byte {
 	buffer := make([]byte, length)
 	header := (*reflect.SliceHeader)(unsafe.Pointer(&buffer))
 	header.Data = ptr
-	header.Len = int(length)
-	header.Cap = int(length)
+	header.Len = uintptr(length)
+	header.Cap = uintptr(length)
 	return buffer
 }
