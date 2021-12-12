@@ -16,3 +16,6 @@ vendor/
 
 # Goland
 .idea/
+
+# Example build dir
+build/
