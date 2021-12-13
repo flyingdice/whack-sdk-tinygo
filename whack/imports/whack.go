@@ -1,6 +1,6 @@
 package imports
 
-// #include <host.h>
+// #include <whack.h>
 import "C"
 import (
 	"github.com/flyingdice/whack-sdk-tinygo/internal/memory"
