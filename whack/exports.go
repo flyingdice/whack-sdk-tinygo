@@ -25,9 +25,9 @@ func main(ptr uintptr, length int32) {
 		// Return Success/error of registered app code
 		// back to the host.
 		if res.Error != nil {
-			Error(res.Error)
+			HostError(res.Error)
 		} else if res.Success != nil {
-			Success(res.Success)
+			HostSuccess(res.Success)
 		}
 	}
 }
