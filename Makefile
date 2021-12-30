@@ -10,17 +10,22 @@ GOROOT    ?= $(shell tinygo info | grep GOROOT | cut -d ' ' -f 7)
 VERSION  ?= $(shell git describe --tags)
 ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
+.PHONY: clean
+clean: $(wildcard examples/*) ## Build all examples.
+	@rm $(ROOT_DIR)/build/$^/$(shell basename $^).wasm
+
 .PHONY: build
-build: $(wildcard examples/*)
+build: $(wildcard examples/*) ## Build all examples.
 	@mkdir -p $(ROOT_DIR)/build/$^ && \
 	cd $^ && \
 	tinygo build \
-		-target wasm \
-		-gc conservative \
-		-no-debug \
-		-wasm-abi generic \
+		-target wasi \
 		-o $(ROOT_DIR)/build/$^/$(shell basename $^).wasm \
 		.
+
+.PHONY: lint
+lint: ## Run golang linter.
+	@golangci-lint run
 
 .PHONY: modules
 modules: ## Tidy up and vendor go modules.
