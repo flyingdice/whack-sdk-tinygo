@@ -1,19 +1,19 @@
 package whack
 
-import "github.com/flyingdice/whack-sdk-tinygo/internal/memory"
-
-type Request interface {
-	Bytes() []byte
+type Request struct {
+	Bytes []byte
 }
 
-type request struct {
-	bytes []byte
+func (r *Request) Stdout(a ...interface{}) {
+	stdout(a...)
 }
 
-func (r *request) Bytes() []byte { return r.bytes }
+func (r *Request) Stderr(a ...interface{}) {
+	stderr(a...)
+}
 
-func NewRequest(ptr uintptr, length int32) *request {
-	return &request{
-		bytes: memory.PointerToSlice(ptr, length),
+func NewRequest(ptr uintptr, length int32) *Request {
+	return &Request{
+		Bytes: pointerToSlice(ptr, length),
 	}
 }

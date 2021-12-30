@@ -1,4 +1,4 @@
-// whack.h
+// imports.h
 //
 // This header file defines the Whack host SDK that is injected
 // into the WASM instance via import object.
