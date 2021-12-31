@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/flyingdice/whack-sdk-tinygo/whack"
+	"github.com/flyingdice/whack-tinygo-guest-sdk/whack"
 )
 
 type helloApp struct{}

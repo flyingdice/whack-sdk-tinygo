@@ -1,3 +1,3 @@
-module github.com/flyingdice/whack-sdk-tinygo
+module github.com/flyingdice/whack-tinygo-guest-sdk
 
 go 1.17

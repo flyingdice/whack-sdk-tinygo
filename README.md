@@ -1,11 +1,11 @@
-# Whack SDK - TinyGo
+# Whack TinyGo Guest SDK
 
-[Whack](https://github.com/flyingdice/whack) WASM SDK implementation for [TinyGo](https://tinygo.org/).
+[Whack](https://github.com/flyingdice/whack) guest SDK implementation for [TinyGo](https://tinygo.org/).
 
 ## Getting Started
 
 ```
-go get "github.com/flyingdice/whack-sdk-tinygo"
+go get "github.com/flyingdice/whack-tinygo-guest-sdk"
 ```
 
 Follow the simple snippet below or the [examples](examples) code for a more in-depth look.
@@ -14,7 +14,7 @@ Follow the simple snippet below or the [examples](examples) code for a more in-d
 package main
 
 import (
-	"github.com/flyingdice/whack-sdk-tinygo/whack"
+	"github.com/flyingdice/whack-tinygo-guest-sdk/whack"
 )
 
 type helloApp struct{}
