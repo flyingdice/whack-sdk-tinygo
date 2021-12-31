@@ -19,7 +19,7 @@ import (
 
 type helloApp struct{}
 
-func (a *helloApp) Main(req whack.Request) whack.Response {
+func (a *helloApp) Main(req *whack.Request) *whack.Response {
 	return whack.Success([]byte("Hello World"))
 }
 
