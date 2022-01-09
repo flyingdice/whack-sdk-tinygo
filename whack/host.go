@@ -1,16 +1,16 @@
 package whack
 
-// #include <imports.h>
+// #include <host.h>
 import "C"
 
 // HostSuccess calls the imported SD host function with the given result.
 func HostSuccess(val []byte) {
 	ptr, length := sliceToPointer(val)
-	C.success(ptr, length)
+	C.host_success(ptr, length)
 }
 
 // HostError calls the imported error host function with the given error.
 func HostError(err error) {
 	ptr, length := sliceToPointer([]byte(err.Error()))
-	C.error(ptr, length)
+	C.host_error(ptr, length)
 }
