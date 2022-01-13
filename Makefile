@@ -12,16 +12,18 @@ ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 .PHONY: clean
 clean: $(wildcard examples/*) ## Build all examples.
-	@rm $(ROOT_DIR)/build/$^/$(shell basename $^).wasm
+	@for e in $^; do \
+		rm -rf $(ROOT_DIR)/build/$$e/$$(basename $$e).wasm ; \
+	done;
 
 .PHONY: build
 build: $(wildcard examples/*) ## Build all examples.
-	@mkdir -p $(ROOT_DIR)/build/$^ && \
-	cd $^ && \
-	tinygo build \
-		-target wasi \
-		-o $(ROOT_DIR)/build/$^/$(shell basename $^).wasm \
-		.
+	@for e in $^ ; do \
+		mkdir -p $(ROOT_DIR)/build/$$e ; \
+		cd $$e ; \
+		tinygo build -target wasi -o $(ROOT_DIR)/build/$$e/$$(basename $$e).wasm ; \
+		cd $(ROOT_DIR) ; \
+	done; \
 
 .PHONY: lint
 lint: ## Run golang linter.
