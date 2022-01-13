@@ -9,10 +9,10 @@ import (
 // Create logger iface bound to the request that allows 3rd party code
 // to log via host function import.
 
-func stdout(a ...interface{}) {
-	_, _ = fmt.Fprint(os.Stdout, a...)
+func stdout(s string, a ...interface{}) {
+	_, _ = fmt.Fprintf(os.Stdout, s, a...)
 }
 
-func stderr(a ...interface{}) {
-	_, _ = fmt.Fprint(os.Stderr, a...)
+func stderr(s string, a ...interface{}) {
+	_, _ = fmt.Fprintf(os.Stderr, s, a...)
 }
